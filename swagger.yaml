@@ -1,0 +1,155 @@
+
+swagger: "2.0"
+info:
+  title: API Swagger
+  description: Documentación de APIs.
+  version: 1.0.0
+
+paths:
+  /users:
+    get:
+      summary: Obtener lista de usuarios.
+      description: Devuelve en una lista, la información de los usuarios registrados en el sistema.
+      tags:
+        - Usuarios
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+    post:
+      summary: Registrar nuevo usuario.
+      description: Registra un nuevo usuario en el sistema.
+      tags:
+        - Usuarios
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Parámetros Body.
+          schema:
+            type: object
+            required:
+              - firstname
+              - lastname
+              - email
+            properties:
+              firstname:
+                type: string
+              lastname:
+                type: string
+              email:
+                type: string
+      responses:
+        200:
+          description: OK
+  /users/{id}:
+    get:
+      summary: Obtener información de un usuario.
+      description: Devuelve la información de un usuario.
+      tags:
+        - Usuarios
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+          minimum: 1
+          description: ID del usuario.
+      responses:
+        200:
+          description: OK
+    delete:
+      summary: Eliminar un usuario.
+      description: Elimina la información de un usuario.
+      tags:
+        - Usuarios
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+          minimum: 1
+          description: ID del usuario.
+      responses:
+        200:
+          description: OK
+  
+  /tasks:
+    get:
+      summary: Obtener lista de tareas.
+      description: Devuelve en una lista, la información de las tareas registradas en el sistema.
+      tags:
+        - Tareas
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+    post:
+      summary: Registrar nueva tarea.
+      description: Registra una nueva tarea en el sistema.
+      tags:
+        - Tareas
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Parámetros Body.
+          schema:
+            type: object
+            required:
+              - title
+              - description
+              - userid
+            properties:
+              title:
+                type: string
+              description:
+                type: string
+              userid:
+                type: integer
+      responses:
+        200:
+          description: OK
+  /tasks/{id}:
+    get:
+      summary: Obtener información de una tarea.
+      description: Devuelve la información de una tarea.
+      tags:
+        - Tareas
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+          minimum: 1
+          description: ID de la tarea.
+      responses:
+        200:
+          description: OK
+    delete:
+      summary: Eliminar una tarea.
+      description: Elimina la información de una tarea.
+      tags:
+        - Tareas
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+          minimum: 1
+          description: ID de la tarea.
+      responses:
+        200:
+          description: OK
